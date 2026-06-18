@@ -68,6 +68,23 @@ func envOrDefault(key, def string) string {
 	return def
 }
 
+// resolveVendorURL downloads vendor.tar.gz from jsDelivr (not bundled in the function).
+func resolveVendorURL() string {
+	if url := os.Getenv("VENDOR_URL"); url != "" {
+		return url
+	}
+	owner := os.Getenv("VERCEL_GIT_REPO_OWNER")
+	slug := os.Getenv("VERCEL_GIT_REPO_SLUG")
+	ref := os.Getenv("VERCEL_GIT_COMMIT_REF")
+	if owner == "" || slug == "" {
+		return ""
+	}
+	if ref == "" {
+		ref = "main"
+	}
+	return fmt.Sprintf("https://cdn.jsdelivr.net/gh/%s/%s@%s/api/vendor.tar.gz", owner, slug, ref)
+}
+
 // ---------------------------------------------------------------------------
 // Vercel serverless entry point
 // ---------------------------------------------------------------------------
@@ -114,22 +131,20 @@ func bootstrap() error {
 		}
 	}
 
-	// 2. Extract vendor — prefer bundled vendor.tar.gz (no cold-start download needed),
-	//    fall back to VENDOR_URL if not bundled.
+	// 2. Extract vendor from CDN (keeps function bundle under 250 MB).
 	if _, err := os.Stat("/tmp/vendor"); os.IsNotExist(err) {
-		bundled := "/var/task/vendor.tar.gz"
-		if _, err := os.Stat(bundled); err == nil {
-			if err := extractTarGzFile(bundled, "/tmp"); err != nil {
-				return fmt.Errorf("extract bundled vendor: %w", err)
+		vendorURL := resolveVendorURL()
+		if vendorURL == "" {
+			bundled := "/var/task/vendor.tar.gz"
+			if _, err := os.Stat(bundled); err == nil {
+				if err := extractTarGzFile(bundled, "/tmp"); err != nil {
+					return fmt.Errorf("extract bundled vendor: %w", err)
+				}
+			} else {
+				return fmt.Errorf("vendor not found: set VENDOR_URL or commit api/vendor.tar.gz to your repo")
 			}
-		} else {
-			vendorURL := os.Getenv("VENDOR_URL")
-			if vendorURL == "" {
-				return fmt.Errorf("vendor.tar.gz not found at /var/task/vendor.tar.gz — run 'bash scripts/pack.sh' before deploying")
-			}
-			if err := downloadAndExtractTarGz(vendorURL, "/tmp"); err != nil {
-				return fmt.Errorf("download vendor: %w", err)
-			}
+		} else if err := downloadAndExtractTarGz(vendorURL, "/tmp"); err != nil {
+			return fmt.Errorf("download vendor from %s: %w", vendorURL, err)
 		}
 	}
 

@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
-# Vercel build — uses pre-committed api/vendor.tar.gz, copies slim Laravel, deletes bloat.
+# Vercel build — slim api/laravel copy, then DELETE all root bloat before packaging.
 set -euo pipefail
 
-PROJECT_ROOT="$(pwd)"
-
 if [ ! -f "api/vendor.tar.gz" ]; then
-  echo "ERROR: api/vendor.tar.gz is missing."
-  echo "Run: bash scripts/pack.sh"
-  echo "Then commit api/vendor.tar.gz before deploying."
+  echo "ERROR: api/vendor.tar.gz missing. Run: powershell -File scripts/pack.ps1"
   exit 1
 fi
 
-echo "==> vendor.tar.gz: $(du -sh api/vendor.tar.gz | cut -f1)"
+echo "==> vendor.tar.gz in repo: $(du -sh api/vendor.tar.gz | cut -f1) (downloaded at runtime, NOT bundled)"
 
-echo "==> Copying slim Laravel bundle into api/laravel/..."
-rm -rf api/laravel api/php-fpm-bin
+echo "==> Building slim Laravel into api/laravel/..."
+rm -rf api/laravel api/php-fpm-bin api/vendor.tar.gz
 mkdir -p api/laravel
 
 for d in app bootstrap config routes; do
@@ -43,11 +39,23 @@ for f in artisan composer.json composer.lock; do
   [ -f "$f" ] && cp "$f" api/laravel/ || true
 done
 
-echo "    laravel bundle: $(du -sh api/laravel | cut -f1)"
+echo "    api/laravel: $(du -sh api/laravel | cut -f1)"
 
-echo "==> Removing node_modules and vendor (prevents 250 MB error)..."
-rm -rf node_modules vendor
+echo "==> NUCLEAR CLEANUP — remove folders Vercel incorrectly bundles into the function..."
+rm -rf \
+  node_modules \
+  vendor \
+  app \
+  bootstrap \
+  config \
+  routes \
+  database \
+  resources \
+  storage \
+  tests \
+  artisan
 
-echo "==> Final api/ footprint:"
-du -sh api api/vendor.tar.gz api/laravel 2>/dev/null || true
-echo "==> Vercel prepare complete."
+echo "==> Function bundle (api/ only, no vendor.tar.gz):"
+du -sh api api/laravel api/main.go 2>/dev/null || true
+ls -la api/
+echo "==> Done. vendor loads from jsDelivr at runtime using VERCEL_GIT_REPO_* env vars."

@@ -1,18 +1,28 @@
 {
   "version": 2,
-  "framework": null,
-  "outputDirectory": "public",
   "buildCommand": "npm run build && bash scripts/vercel-prepare.sh",
   "installCommand": "npm install",
+  "builds": [
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
   "functions": {
-    "api/**/*.go": {
+    "api/main.go": {
       "runtime": "@vercel/go@3.4.3",
       "maxDuration": 60,
-      "excludeFiles": "{node_modules/**,vendor/**,public/**,storage/**,resources/js/**,resources/sass/**,resources/css/**,tests/**,.git/**,bootstrap/cache/**}"
+      "memory": 1024
     }
   },
   "routes": [
-    { "handle": "filesystem" },
+    { "src": "/build/(.*)", "dest": "/public/build/$1" },
+    { "src": "/images/(.*)", "dest": "/public/images/$1" },
+    { "src": "/css/(.*)", "dest": "/public/css/$1" },
+    { "src": "/js/(.*)", "dest": "/public/js/$1" },
+    { "src": "/virtual-tour/(.*)", "dest": "/public/virtual-tour/$1" },
+    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+    { "src": "/robots.txt", "dest": "/public/robots.txt" },
     { "src": "/(.*)", "dest": "/api/main.go" }
   ],
   "env": {

@@ -1,40 +1,29 @@
-# Rebuilt on Vercel — must not upload (causes 250 MB function error)
+# Dependencies — never upload
 /node_modules
 /vendor
 
-# Local uploads only
+# Local uploads
 /storage/app
 /storage/logs
-/storage/framework/cache
-/storage/framework/sessions
-/storage/framework/views
+/storage/framework
 /storage/pail
-/storage/*.key
 /public/storage
 /public/hot
 
 # Dev / secrets
 /tests
 .phpunit.cache
-.phpunit.result.cache
 .env
 .env.*
 !.env.example
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
 .idea
 .vscode
-.fleet
-.nova
-.zed
-.phpactor.json
-/auth.json
 
-# Generated at build time (not from git)
+# Build-time only (inside api/)
 api/php-fpm-bin
 api/laravel
 
-# Force-include committed vendor archive
+# vendor.tar.gz stays in GIT for jsDelivr download at runtime — force include
 !api/vendor.tar.gz
