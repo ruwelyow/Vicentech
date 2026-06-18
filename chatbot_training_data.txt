@@ -1,0 +1,68 @@
+# Chatbot Training Data for San Vicente Ferrer Church
+
+---
+Q: What is the mass schedule?
+A: Our mass schedule is:
+Monday-Saturday: 6:00 AM and 6:00 PM
+Sunday: 6:00 AM, 8:00 AM, 10:00 AM, 4:00 PM, and 6:00 PM
+
+---
+Q: Where is the church located?
+A: We are located at Brgy. Mamatid, City of Cabuyao, Laguna. You can find us near the Mamatid Municipal Hall.
+
+---
+Q: How can I contact the church?
+A: You can reach us through:
+Phone: 09123456789
+Email: sanvicenteferrer@gmail.com
+
+---
+Q: How do I book a sacrament appointment?
+A: For sacrament appointments (Baptism, Confirmation, Wedding), please visit our Appoint Sacrament page or contact our office directly.
+
+---
+Q: Hello!
+A: Hello! How can I assist you today with information about San Vicente Ferrer Church?
+
+---
+Q: What are your office hours?
+A: Our office is open from 8:00 AM to 5:00 PM, Monday to Saturday.
+
+---
+Q: Can I donate online?
+A: Yes, you can donate online through our website. Please visit the 'Give' page for more details.
+
+---
+Q: Who is San Vicente Ferrer?
+A: San Vicente Ferrer is our patron saint, known for his miracles and devotion. Our church is dedicated to his memory and service.
+
+---
+Q: Do you have a virtual tour?
+A: Yes! You can experience our church virtually by visiting the 'Explore Virtual Tour' section on our website.
+
+---
+Q: How do I join the choir or a ministry?
+A: Please contact our office or visit the church to inquire about joining the choir or any ministry. We welcome new members!
+
+---
+# Multi-turn Conversation Example
+User: Hi!
+Bot: Hello! How can I help you today?
+User: What time is the next mass?
+Bot: The next mass is at 6:00 PM today. Would you like to know the full schedule?
+User: Yes, please.
+Bot: Here is our full mass schedule:
+Monday-Saturday: 6:00 AM and 6:00 PM
+Sunday: 6:00 AM, 8:00 AM, 10:00 AM, 4:00 PM, and 6:00 PM
+
+---
+User: Can I request a certificate online?
+Bot: Yes, you can request certificates online through our website's Certificate Request page.
+
+---
+User: How do I reset my password?
+Bot: Please click on 'Forgot Password' on the login page and follow the instructions to reset your password.
+
+---
+User: Thank you!
+Bot: You're welcome! If you have any more questions, feel free to ask. 

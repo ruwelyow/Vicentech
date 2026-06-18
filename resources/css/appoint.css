@@ -1,0 +1,349 @@
+/* Appoint Page Styles */
+.appoint-page {
+    min-height: 100vh;
+    background: #DED0B6;
+}
+
+/* Hero Section */
+.appoint-hero {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.appoint-hero h1 {
+    color: #3F2E1E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.appoint-hero p {
+    color: #5C4B38;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* Sacrament Cards */
+.sacrament-card {
+    transition: all 0.3s ease;
+}
+
+.sacrament-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Confirmation Modal */
+.confirmation-modal {
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.confirmation-modal-content {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Form Elements */
+input, select, textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(205, 139, 62, 0.2);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .appoint-hero {
+        padding: 2rem 0;
+    }
+
+    .appoint-hero h1 {
+        font-size: 2rem;
+    }
+
+    .form-container {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.appointment-container {
+    min-height: calc(100vh - 4rem);
+    background: linear-gradient(to bottom, rgba(255, 248, 234, 0.9), rgba(205, 138, 62, 0.445));
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Custom styles for flatpickr */
+.flatpickr-calendar {
+    border-radius: 0.5rem;
+}
+
+.flatpickr-day.selected {
+    background: #CD8B3E !important;
+    border-color: #CD8B3E !important;
+}
+
+.flatpickr-day:hover {
+    background: #CD8B3E33 !important;
+}
+
+.flatpickr-day.today {
+    border-color: #CD8B3E !important;
+}
+
+/* React Datepicker Custom Styles */
+.react-datepicker {
+    font-family: 'Times New Roman', serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+    background-color: #F8F8F8;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.react-datepicker__current-month {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3F2E1E;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__navigation {
+    top: 15px;
+    line-height: 1.7;
+    border: 0.45rem solid transparent;
+}
+
+.react-datepicker__navigation--previous {
+    border-right-color: #5C4B38;
+    left: 10px;
+}
+
+.react-datepicker__navigation--next {
+    border-left-color: #5C4B38;
+    right: 10px;
+}
+
+.react-datepicker__month {
+    margin: 10px;
+}
+
+.react-datepicker__week {
+    display: flex;
+}
+
+.react-datepicker__day-names {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    background-color: #F8F8F8;
+    border-bottom: 1px solid #ccc;
+}
+
+.react-datepicker__day-name {
+    color: #3F2E1E;
+    font-weight: bold;
+    width: 38px;
+    text-align: center;
+    margin: 0.166rem;
+}
+
+.react-datepicker__day {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    margin: 0.166rem;
+    color: #5C4B38;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.react-datepicker__day--outside-month {
+    color: #ccc;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: #CD8B3E;
+    color: white;
+    border-color: #CD8B3E;
+}
+
+.react-datepicker__day--today {
+    font-weight: bold;
+    border-color: #CD8B3E;
+}
+
+.react-datepicker__day:hover {
+    background-color: #CD8B3E33;
+}
+
+.react-datepicker__day--disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow {
+    border-color: #5C4B38;
+}
+
+/* Calendar container adjustments in appoint.jsx */
+.calendar-container .react-datepicker-wrapper {
+    width: 100%;
+}
+
+.calendar-container .react-datepicker {
+    width: 100%; /* Make the datepicker take full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.calendar-container .react-datepicker__month-container {
+    width: 100%;
+}
+
+.calendar-container .react-datepicker__month {
+    display: block; /* Ensure the month takes full width */
+}
+
+.calendar-container .react-datepicker__week {
+    justify-content: space-around; /* Distribute days evenly */
+}
+
+.react-datepicker__day--weekend {
+    color: #B77B35; /* Example: make weekends a different color */
+}
+
+.react-datepicker__day--selected.react-datepicker__day--weekend {
+    color: white; /* Ensure selected weekend days are white */
+}
+
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range {
+    background-color: #CD8B3E33;
+}
+
+.react-datepicker__day--highlighted {
+    background-color: #CD8B3E66;
+}
+
+.react-datepicker__triangle {
+    display: none; /* Hide the little triangle */
+}
+
+/* Floating Chat Button Styles */
+.chat-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #CD8B3E;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    z-index: 50;
+}
+
+.chat-button:hover {
+    background-color: #B77B35;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chat-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Chat bubble animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.chat-button.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Added style to hide search form by default */
+.search-form {
+    display: none; /* Ensure hidden by default */
+}

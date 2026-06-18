@@ -1,0 +1,293 @@
+/* Global Admin Theme - Minimalist, consistent styling scoped to admin areas */
+:root {
+  --admin-accent: #806c4b;
+  --admin-accent-600: #6b5a3f;
+  --admin-accent-50: #f5f3ef;
+  --admin-accent-100: #e8e0d6;
+  --admin-danger: #e57373;
+  --admin-danger-600: #d74f4f;
+  --admin-bg: #ffffff;
+  --admin-surface: #ffffff;
+  --admin-border: #f2e4ce;
+  --admin-shadow: 0 4px 12px rgba(60, 47, 30, 0.06);
+  --admin-radius-lg: 18px;
+  --admin-radius-md: 12px;
+  --admin-radius-sm: 8px;
+  --admin-text: #3F2E1E;
+  --admin-text-muted: #5C4B38;
+}
+
+/* Scope base styles to admin containers to avoid bleeding to public pages */
+.staff-main-content, .admin-events-container, .responsive-admin-users, .admin-announcements-container {
+  color: var(--admin-text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* Prevent text cursor on ALL text elements in staff modules (exclude certificate generator and input fields) */
+.staff-main-content:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path) {
+  user-select: none;
+  caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Also apply to other staff containers */
+.certificates-container:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path):not(.certificate-generator *),
+.sacraments-container:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path):not(.certificate-generator *),
+.mortuary-container:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path):not(.certificate-generator *),
+.staff-records-container:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path):not(.certificate-generator *),
+.staff-dashboard-content:not(.certificate-generator) *:not(input):not(textarea):not([contenteditable="true"]):not([contenteditable=""]):not(button):not(a):not(select):not(svg):not(path):not(.certificate-generator *) {
+  user-select: none;
+  caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Ensure input fields, textareas, and contenteditable elements show cursor */
+.staff-main-content input,
+.staff-main-content textarea,
+.staff-main-content [contenteditable="true"],
+.staff-main-content [contenteditable=""],
+.certificates-container input,
+.certificates-container textarea,
+.certificates-container [contenteditable="true"],
+.certificates-container [contenteditable=""],
+.sacraments-container input,
+.sacraments-container textarea,
+.sacraments-container [contenteditable="true"],
+.sacraments-container [contenteditable=""],
+.mortuary-container input,
+.mortuary-container textarea,
+.mortuary-container [contenteditable="true"],
+.mortuary-container [contenteditable=""],
+.staff-records-container input,
+.staff-records-container textarea,
+.staff-records-container [contenteditable="true"],
+.staff-records-container [contenteditable=""],
+.staff-dashboard-content input,
+.staff-dashboard-content textarea,
+.staff-dashboard-content [contenteditable="true"],
+.staff-dashboard-content [contenteditable=""] {
+  user-select: auto !important;
+  caret-color: auto !important;
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+}
+
+/* Ensure certificate generator elements can still be edited */
+.certificate-generator label,
+.certificate-generator .card-label,
+.certificate-generator .card-sublabel,
+.certificate-generator .card-value,
+.certificate-generator h1,
+.certificate-generator h2,
+.certificate-generator h3,
+.certificate-generator .template-element,
+.certificate-generator input,
+.certificate-generator textarea,
+.certificate-generator [contenteditable="true"] {
+  user-select: auto !important;
+  cursor: auto !important;
+  caret-color: auto !important;
+}
+
+/* Headings */
+.staff-main-content h1, .admin-events-title, .sacraments-title {
+  color: var(--admin-text);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  margin: 0 0 1rem 0;
+}
+.staff-main-content h2, .staff-main-content h3, .admin-events-container h3 {
+  color: var(--admin-text);
+  font-weight: 700;
+}
+
+/* Cards */
+.card, .summary-card, .requests-table-container, .user-table-wrapper, .event-form-card, .admin-announcements-container, .events-container .event-card {
+  background: var(--admin-surface);
+  border: 1.5px solid var(--admin-border);
+  border-radius: var(--admin-radius-lg);
+  box-shadow: var(--admin-shadow);
+}
+
+/* Action bars and headers */
+.header-controls, .admin-events-header, .filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Buttons - unify look */
+.button, .action-button, .add-event-btn, .management-btn.primary, .edit-btn, .delete-btn, .add-news-btn, .add-btn {
+  appearance: none;
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(128,108,75,0.10);
+}
+
+/* Primary */
+.button, .action-button, .add-event-btn, .management-btn.primary, .edit-btn, .add-news-btn, .add-btn {
+  background: var(--admin-accent);
+  color: #fff;
+}
+.button:hover, .action-button:hover, .add-event-btn:hover, .management-btn.primary:hover, .edit-btn:hover, .add-news-btn:hover, .add-btn:hover {
+  background: var(--admin-accent-600);
+}
+
+/* Secondary (outlined) */
+.button.cancel, .btn-secondary, .close-btn {
+  background: #fff;
+  color: var(--admin-accent);
+  border: 2px solid var(--admin-accent);
+  box-shadow: 0 2px 8px rgba(128,108,75,0.06);
+}
+.button.cancel:hover, .btn-secondary:hover, .close-btn:hover {
+  background: var(--admin-accent-50);
+}
+
+/* Danger */
+.button.delete, .delete-btn {
+  background: var(--admin-danger);
+}
+.button.delete:hover, .delete-btn:hover {
+  background: var(--admin-danger-600);
+}
+
+/* Button groups */
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+/* Forms */
+.staff-main-content input[type="text"],
+.staff-main-content input[type="date"],
+.staff-main-content input[type="time"],
+.staff-main-content input[type="email"],
+.staff-main-content input[type="password"],
+.staff-main-content input[type="tel"],
+.staff-main-content select,
+.staff-main-content textarea,
+.admin-events-container input,
+.admin-events-container textarea,
+.responsive-admin-users input,
+.responsive-admin-users select,
+.responsive-admin-users textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--admin-radius-sm);
+  border: 1.5px solid var(--admin-border);
+  font-size: 15px;
+  outline: none;
+  color: var(--admin-text);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.staff-main-content input:focus,
+.staff-main-content select:focus,
+.staff-main-content textarea:focus,
+.admin-events-container input:focus,
+.admin-events-container textarea:focus,
+.responsive-admin-users input:focus,
+.responsive-admin-users select:focus,
+.responsive-admin-users textarea:focus {
+  border-color: var(--admin-accent-100);
+  box-shadow: 0 0 0 3px rgba(128,108,75,0.12);
+}
+
+/* Labels */
+.staff-main-content label,
+.admin-events-container label,
+.responsive-admin-users label {
+  font-weight: 600;
+  color: var(--admin-text);
+  font-size: 15px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Tables */
+.responsive-table, .user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.responsive-table th, .responsive-table td,
+.user-table th, .user-table td {
+  border-bottom: 1px solid var(--admin-border);
+  padding: 12px 14px;
+  text-align: left;
+  color: var(--admin-text);
+}
+.responsive-table thead th, .user-table thead th {
+  background: var(--admin-accent-50);
+  color: var(--admin-text);
+  font-weight: 700;
+}
+.responsive-table tbody tr:hover, .user-table tbody tr:hover {
+  background: #faf7f1;
+}
+
+/* Announcement cards */
+.announcement-card.summary-card {
+  background: var(--admin-surface);
+  border: 1.5px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  box-shadow: var(--admin-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+.announcement-title { font-weight: 700; color: var(--admin-text); }
+.announcement-description { color: var(--admin-text-muted); }
+.announcement-date { color: var(--admin-accent); font-weight: 600; }
+
+/* Loading/state messages */
+.loading-users, .success-msg, .error-msg {
+  border-radius: var(--admin-radius-sm);
+  padding: 10px 14px;
+}
+.success-msg { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.error-msg { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* Utility spacing (non-intrusive) */
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-1 { margin-top: .25rem !important; }
+.mt-2 { margin-top: .5rem !important; }
+.mt-3 { margin-top: .75rem !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mb-1 { margin-bottom: .25rem !important; }
+.mb-2 { margin-bottom: .5rem !important; }
+.mb-3 { margin-bottom: .75rem !important; }
+.mb-4 { margin-bottom: 1rem !important; }
+
+/* Inputs with error */
+input.error, textarea.error, select.error {
+  border-color: #fecaca !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.08) !important;
+}
+.error-message { color: #b91c1c; font-size: 12px; margin-top: 4px; }
+
+/* File inputs */
+.file-input { color: var(--admin-text); font-size: 13px; }
+
+/* Close button icon tweaks */
+.close-btn svg { width: 20px; height: 20px; }
+
+/* Ensure containers don't overflow on small screens */
+.requests-table-container, .user-table-wrapper, .events-container { overflow-x: auto; }

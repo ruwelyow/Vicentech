@@ -1,0 +1,140 @@
+/* Cookie Consent Banner Animations */
+
+/* Slide up animation for banner appearance */
+@keyframes slideUpIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Slide down animation for banner dismissal */
+@keyframes slideDownOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* Fade in animation for modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide in from bottom for modal */
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Pulse animation for accept button */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Cookie consent banner styles */
+.cookie-banner-enter {
+    animation: slideUpIn 0.3s ease-out;
+}
+
+.cookie-banner-exit {
+    animation: slideDownOut 0.3s ease-in;
+}
+
+/* Modal animations */
+.cookie-modal-backdrop {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.cookie-modal-content {
+    animation: slideInFromBottom 0.3s ease-out;
+}
+
+/* Button hover effects */
+.cookie-accept-btn:hover {
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* Close button hover effect */
+.cookie-close-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.cookie-close-btn:hover {
+    transform: rotate(90deg);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dismiss button subtle animation */
+.cookie-dismiss-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Learn more link animation */
+.cookie-learn-more:hover {
+    transform: translateX(2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cookie-banner-enter {
+        animation: slideUpIn 0.4s ease-out;
+    }
+    
+    .cookie-banner-exit {
+        animation: slideDownOut 0.4s ease-in;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .cookie-banner-enter,
+    .cookie-banner-exit,
+    .cookie-modal-backdrop,
+    .cookie-modal-content,
+    .cookie-accept-btn:hover,
+    .cookie-close-btn:hover,
+    .cookie-dismiss-btn:hover,
+    .cookie-learn-more:hover {
+        animation: none;
+        transition: none;
+    }
+    
+    .cookie-close-btn:hover {
+        transform: none;
+    }
+    
+    .cookie-dismiss-btn:hover {
+        transform: none;
+    }
+    
+    .cookie-learn-more:hover {
+        transform: none;
+    }
+}
+

@@ -1,0 +1,1003 @@
+.sacraments-container {
+  padding: 1.5rem;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sacraments-header {
+  margin-bottom: 1.5rem;
+}
+
+.sacraments-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin-bottom: 0.5rem;
+  user-select: none;
+  cursor: default;
+  caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.sacraments-subtitle {
+  color: #5C4B38;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  user-select: none;
+  cursor: default;
+  caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Error and Loading Messages */
+.error-message {
+  color: #DC2626;
+  background: #FEE2E2;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  border: 1px solid #FECACA;
+}
+
+/* Loading State - Shared across staff components */
+.loading-users {
+  color: #806c4b;
+  font-weight: 600;
+  text-align: left !important;
+  padding: 2rem 0;
+}
+
+.loading-message {
+  color: #5C4B38;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loading-message::before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #f2e4ce;
+  border-top-color: #806c4b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Management Buttons */
+.management-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.management-btn {
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.management-btn.primary {
+  background: #806c4b;
+  color: white;
+  box-shadow: 0 2px 4px rgba(128, 108, 75, 0.1);
+}
+
+.management-btn.primary:hover {
+  background: #6b5a3f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(128, 108, 75, 0.15);
+}
+
+.btn-text-short {
+  display: none;
+}
+
+/* Back Button */
+.back-btn {
+  margin-top: 1rem;
+  padding: 0.625rem 1rem;
+  background: white;
+  color: #806c4b;
+  border: 2px solid #806c4b;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.back-btn:hover {
+  background: #806c4b;
+  color: white;
+}
+
+.back-arrow {
+  font-size: 1rem;
+}
+
+.back-text-short {
+  display: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #f2e4ce;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(128, 108, 75, 0.1);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #5C4B38;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-value.total {
+  color: #3F2E1E;
+}
+
+.stat-value.pending {
+  color: #D97706;
+}
+
+.stat-value.processing {
+  color: #2563EB;
+}
+
+.stat-value.approved {
+  color: #059669;
+}
+
+.sacraments-table-container {
+  background: white;
+  border-radius: 0.5rem;
+  border: 1px solid #f2e4ce;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sacraments-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.sacraments-table th {
+  background: #FFF6E5;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #3F2E1E;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sacraments-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f2e4ce;
+  color: #3F2E1E;
+  font-size: 0.875rem;
+  vertical-align: top;
+}
+
+.sacraments-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sacrament-row {
+  cursor: pointer;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+
+.sacrament-row:hover {
+  background: #f9f6f1 !important;
+  box-shadow: 0 2px 8px rgba(128,108,75,0.08);
+}
+
+/* Table Content Styles */
+.sacrament-type {
+  font-weight: 600;
+  color: #3F2E1E;
+}
+
+.requestor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.requestor-name {
+  font-weight: 500;
+  color: #3F2E1E;
+}
+
+.date-requested {
+  font-size: 0.75rem;
+  color: #5C4B38;
+  display: none;
+}
+
+.show-mobile {
+  display: none;
+}
+
+/* Table Actions */
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.action-text-short {
+  display: none;
+}
+
+.requirements-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.requirements-list li {
+  margin-bottom: 0.25rem;
+}
+
+.requirements-list li:last-child {
+  margin-bottom: 0;
+}
+
+
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.status-badge.processing {
+  background: #DBEAFE;
+  color: #2563EB;
+}
+
+.status-badge.approved {
+  background: #DEF7EC;
+  color: #059669;
+}
+
+.status-badge.rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-button.process {
+  color: #806c4b;
+  background: transparent;
+  border: none;
+}
+
+.action-button.process:hover {
+  color: #6b5a3f;
+}
+
+.action-button.reject {
+  color: #DC2626;
+  background: transparent;
+  border: none;
+}
+
+.action-button.reject:hover {
+  color: #B91C1C;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button:disabled:hover {
+  color: inherit;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #5C4B38;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #3F2E1E;
+  margin-bottom: 0.5rem;
+}
+
+.empty-subtitle {
+  font-size: 0.875rem;
+  color: #5C4B38;
+  margin: 0;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(44, 44, 44, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,40,20,0.18);
+  padding: 2.5rem;
+  min-width: 340px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #e74c3c;
+  cursor: pointer;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.modal-title {
+  color: #3F2E1E;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  padding-right: 2rem;
+}
+
+.modal-divider {
+  border-top: 1.5px solid #f2e4ce;
+  margin: 0 -2.5rem;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-row {
+  color: #5C4B38;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-row strong {
+  color: #3F2E1E;
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.modal-btn {
+  border-radius: 8px;
+  padding: 0.625rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-btn.primary {
+  background: #806c4b;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(128,108,75,0.10);
+}
+
+.modal-btn.primary:hover {
+  background: #6b5a3f;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.spinner {
+  border: 2px solid #f2e4ce;
+  border-top-color: #806c4b;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+
+/* Large Tablets and Small Desktops (768px - 1199px) */
+@media (max-width: 1199px) {
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.375rem;
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+  .sacraments-container {
+    padding: 1rem;
+  }
+  
+  .sacraments-title {
+    font-size: 1.375rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+  }
+  
+  .sacraments-table {
+    min-width: 700px;
+  }
+  
+  .hide-tablet {
+    display: none !important;
+  }
+  
+  .modal-content {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .modal-divider {
+    margin: 0 -1.5rem;
+  }
+}
+
+/* Large Mobile (640px - 767px) */
+@media (max-width: 767px) {
+  .sacraments-container {
+    padding: 0.75rem;
+  }
+  
+  .sacraments-title {
+    font-size: 1.25rem;
+  }
+  
+  .sacraments-subtitle {
+    font-size: 0.8125rem;
+  }
+  
+  .management-buttons {
+    gap: 0.5rem;
+  }
+  
+  .management-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+  
+  .btn-text-full {
+    display: none;
+  }
+  
+  .btn-text-short {
+    display: inline;
+  }
+  
+  .back-text-full {
+    display: none;
+  }
+  
+  .back-text-short {
+    display: inline;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .stat-label {
+    font-size: 0.8125rem;
+    margin-bottom: 0;
+  }
+  
+  .stat-value {
+    font-size: 1.125rem;
+  }
+  
+  .sacraments-table {
+    min-width: 600px;
+  }
+  
+  .sacraments-table th,
+  .sacraments-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+  
+  .table-actions {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .action-text-full {
+    display: none;
+  }
+  
+  .action-text-short {
+    display: inline;
+  }
+  
+  .action-button {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+    min-width: 32px;
+    text-align: center;
+  }
+  
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem 1rem;
+    min-width: auto;
+    border-radius: 8px;
+    max-height: 95vh;
+  }
+  
+  .modal-title {
+    font-size: 1.25rem;
+    padding-right: 2.5rem;
+  }
+  
+  .modal-divider {
+    margin: 0 -1rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .modal-btn {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
+
+/* Small Mobile (480px - 639px) */
+@media (max-width: 639px) {
+  .sacraments-container {
+    padding: 0.5rem;
+  }
+  
+  .sacraments-title {
+    font-size: 1.125rem;
+  }
+  
+  .management-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .management-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .stats-grid {
+    gap: 0.375rem;
+  }
+  
+  .stat-card {
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+  
+  .sacraments-table {
+    min-width: 500px;
+  }
+  
+  .sacraments-table th,
+  .sacraments-table td {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.8125rem;
+  }
+  
+  .sacraments-table th {
+    font-size: 0.6875rem;
+  }
+  
+  .requestor-name {
+    font-size: 0.8125rem;
+  }
+  
+  .date-requested {
+    font-size: 0.6875rem;
+  }
+  
+  .status-badge {
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.5rem;
+  }
+  
+  .action-button {
+    padding: 0.25rem 0.375rem;
+    font-size: 0.6875rem;
+    min-width: 28px;
+  }
+  
+  .modal-content {
+    padding: 1rem 0.75rem;
+    max-height: 98vh;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+  
+  .modal-divider {
+    margin: 0 -0.75rem;
+  }
+  
+  .detail-row {
+    font-size: 0.875rem;
+  }
+  
+  .requirements-list {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 479px) {
+  .sacraments-container {
+    padding: 0.375rem;
+  }
+  
+  .sacraments-title {
+    font-size: 1rem;
+  }
+  
+  .sacraments-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .management-btn {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .stats-grid {
+    gap: 0.25rem;
+  }
+  
+  .stat-card {
+    padding: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.6875rem;
+  }
+  
+  .stat-value {
+    font-size: 0.875rem;
+  }
+  
+  .sacraments-table {
+    min-width: 450px;
+  }
+  
+  .sacraments-table th,
+  .sacraments-table td {
+    padding: 0.375rem 0.25rem;
+    font-size: 0.75rem;
+  }
+  
+  .sacraments-table th {
+    font-size: 0.625rem;
+  }
+  
+  .requestor-name {
+    font-size: 0.75rem;
+  }
+  
+  .date-requested {
+    font-size: 0.625rem;
+  }
+  
+  .status-badge {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+  }
+  
+  .action-button {
+    padding: 0.1875rem 0.25rem;
+    font-size: 0.625rem;
+    min-width: 24px;
+  }
+  
+  .modal-content {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1rem;
+  }
+  
+  .modal-divider {
+    margin: 0 -0.5rem;
+  }
+  
+  .detail-row {
+    font-size: 0.8125rem;
+  }
+  
+  .requirements-list {
+    font-size: 0.75rem;
+  }
+  
+  .empty-state {
+    padding: 2rem 0.5rem;
+  }
+  
+  .empty-icon {
+    font-size: 2rem;
+  }
+  
+  .empty-title {
+    font-size: 1rem;
+  }
+  
+  .empty-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modal-content {
+    max-height: 95vh;
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+  
+  .stat-card {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .management-btn,
+  .back-btn,
+  .stat-card,
+  .sacrament-row,
+  .action-button,
+  .modal-close,
+  .modal-btn {
+    transition: none;
+  }
+  
+  .loading-message::before,
+  .spinner {
+    animation: none;
+  }
+}
+
+/* High DPI Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .sacraments-table-container {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .stat-card {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .sacraments-container {
+    padding: 0;
+  }
+  
+  .management-buttons,
+  .back-btn,
+  .table-actions,
+  .modal-overlay {
+    display: none !important;
+  }
+  
+  .sacraments-table-container {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .sacraments-table th {
+    background: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .sacrament-row:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+} 

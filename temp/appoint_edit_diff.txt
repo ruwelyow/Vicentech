@@ -1,0 +1,56 @@
+<<<<<<< import '../../../css/pray.css';
+import { useState } from 'react';
+
+=======import '../../../css/pray.css';
+import { useState } from 'react';
+
+const Appoint = () => {
+    const [selectedSacrament, setSelectedSacrament] = React.useState('');
+    const [showCalendar, setShowCalendar] = React.useState(false);
+    const [selectedDate, setSelectedDate] = React.useState(null);
+    const [showTimeSlots, setShowTimeSlots] = useState(false);
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+
+    const handleSubmit = async () => {
+        if (!selectedSacrament || !selectedDate || !selectedTimeSlot) {
+            setError('Please select sacrament, date, and time slot.');
+            return;
+        }
+        setLoading(true);
+        setError(null);
+        setSuccess(null);
+
+        try {
+            const response = await fetch('/api/sacrament-appointments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Include auth token if needed, e.g. Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    sacrament_type: selectedSacrament,
+                    preferred_date: selectedDate,
+                    preferred_time: selectedTimeSlot,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to book appointment');
+            }
+
+            setSuccess('Appointment booked successfully!');
+            setSelectedSacrament('');
+            setSelectedDate(null);
+            setSelectedTimeSlot(null);
+            setShowCalendar(false);
+            setShowTimeSlots(false);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };

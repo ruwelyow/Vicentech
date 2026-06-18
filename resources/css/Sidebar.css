@@ -1,0 +1,330 @@
+.admin-sidebar {
+  background: #DED0B6;
+  color: #3F2E1E;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0.5rem;
+  height: 100vh;
+  box-shadow: 2px 0 16px rgba(205,139,62,0.10);
+  transition: width 0.2s;
+  align-items: center;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9CA3AF #F3F4F6;
+}
+
+/* Minimal/Subtle scrollbar styling */
+.admin-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: #F3F4F6;
+  border-radius: 2px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: #9CA3AF;
+  border-radius: 2px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #6B7280;
+}
+
+.admin-sidebar.open {
+  width: 250px;
+  padding: 2rem 1.2rem;
+  align-items: flex-start;
+}
+
+.admin-sidebar.closed {
+  width: 72px;
+  padding: 1rem 0.5rem;
+}
+
+.sidebar-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.admin-sidebar.closed .sidebar-header {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  margin-bottom: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-header img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.sidebar-title-container {
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar-main-title {
+  font-size: 12px;
+  color: #978c8c;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.sidebar-subtitle {
+  font-size: 18px;
+  color: #9f5807;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.sidebar-location {
+  font-size: 13px;
+  color: #978c8c;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #CD8B3E;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+}
+
+.admin-sidebar.closed .sidebar-toggle {
+  right: 12px;
+  font-size: 1.5rem;
+}
+
+.admin-sidebar.open .sidebar-toggle {
+  align-self: flex-end;
+}
+
+.admin-sidebar.closed .sidebar-toggle {
+  align-self: center;
+}
+
+.sidebar-welcome {
+  font-weight: 900;
+  font-size: 1.7rem;
+  margin-bottom: 2.5rem;
+  color: #CD8B3E;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.admin-sidebar.closed .sidebar-welcome {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  margin-bottom: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-welcome span {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.admin-sidebar.closed .sidebar-nav {
+  margin-top: 3rem;
+  gap: 0.8rem;
+}
+
+.sidebar-nav-item {
+  background: none;
+  border: none;
+  color: #3F2E1E;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  border-radius: 10px;
+  margin-bottom: 2px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.admin-sidebar.open .sidebar-nav-item {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  gap: 14px;
+  justify-content: flex-start;
+}
+
+.admin-sidebar.closed .sidebar-nav-item {
+  text-align: center;
+  padding: 0.7rem 0;
+  gap: 0;
+  justify-content: center;
+}
+
+
+.sidebar-nav-item.active {
+  background: #FFEBC9;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(205,139,62,0.10);
+}
+
+.sidebar-nav-item:not(.active) {
+  font-weight: 400;
+}
+
+.sidebar-nav-icon {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-nav-label {
+  margin-left: 12px;
+  color: #3F2E1E;
+}
+
+.sidebar-nav-badge {
+  background: #e53935 !important; /* red */
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Badge positioning when sidebar is collapsed */
+.admin-sidebar.collapsed .sidebar-nav-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin-left: 0;
+  width: 16px;
+  height: 16px;
+  font-size: 0.75rem;
+  z-index: 10;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  width: 100%;
+}
+
+.logout-button {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 0;
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(205,139,62,0.10);
+  letter-spacing: 1px;
+  transition: background 0.15s, padding 0.2s, font-size 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logout-icon {
+  display: flex;
+  align-items: center;
+}
+
+.logout-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-sidebar.closed .logout-button {
+  padding: 0.6rem 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
+.admin-sidebar.closed .logout-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.badge {
+  background: #e57373;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+}
+.badge-new {
+  background: #CD8B3E;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.1em 0.5em;
+  font-size: 0.75em;
+  margin-left: 0.5em;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, width 0.2s;
+    width: 280px;
+    top: 0 !important; /* Start from very top to overlay header */
+    height: 100vh; /* Full viewport height */
+    z-index: 9999 !important; /* Very high z-index to overlay header */
+    position: fixed !important; /* Ensure fixed positioning */
+    background: #DED0B6 !important; /* Ensure solid background */
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2) !important; /* Add shadow for depth */
+  }
+  
+  .admin-sidebar.open {
+    transform: translateX(0);
+    width: 280px;
+  }
+  
+  .admin-sidebar.closed {
+    transform: translateX(-100%);
+    width: 280px;
+  }
+}

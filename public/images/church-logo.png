@@ -1,0 +1,6 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45" fill="#CD8B3E" stroke="#8B4513" stroke-width="3"/>
+  <text x="50" y="35" text-anchor="middle" font-family="serif" font-size="12" font-weight="bold" fill="white">CHURCH</text>
+  <text x="50" y="50" text-anchor="middle" font-family="serif" font-size="10" fill="white">LOGO</text>
+  <text x="50" y="65" text-anchor="middle" font-family="serif" font-size="8" fill="white">SAN VICENTE</text>
+</svg>

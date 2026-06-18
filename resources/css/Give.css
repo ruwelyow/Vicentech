@@ -1,0 +1,150 @@
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom styles for the Give component */
+.give-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom focus styles for form elements */
+.give-container input:focus,
+.give-container textarea:focus {
+  box-shadow: 0 0 0 3px rgba(205, 139, 62, 0.2);
+}
+
+/* Custom hover effects for donation amount buttons */
+.donation-amount-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom styles for the donation type buttons */
+.donation-type-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-type-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.donation-type-button:hover::after {
+  transform: translateX(100%);
+}
+
+/* Custom styles for the submit button */
+.submit-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.submit-button:hover::before {
+  transform: translateX(100%);
+}
+
+/* Custom styles for form validation */
+.give-container input:invalid,
+.give-container textarea:invalid {
+  border-color: #ff6b6b;
+}
+
+.give-container input:invalid:focus,
+.give-container textarea:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+/* Custom styles for the message textarea */
+.give-container textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Custom styles for the donation amount grid */
+.donation-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+/* Custom styles for the form container */
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(205, 139, 62, 0.1);
+}
+
+/* Custom styles for the additional information section */
+.additional-info {
+  background: rgba(42, 117, 208, 0.05);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Custom styles for the page title */
+.page-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styles for the form labels */
+.form-label {
+  font-weight: 500;
+  color: #2A75D0;
+}
+
+/* Custom styles for the form inputs */
+.form-input {
+  transition: all 0.3s ease;
+}
+
+.form-input:hover {
+  border-color: #CD8B3E;
+}
+
+/* Custom styles for the form buttons */
+.form-button {
+  transition: all 0.3s ease;
+}
+
+.form-button:active {
+  transform: scale(0.98);
+}
+
+/* Custom styles for the form container on mobile */
+@media (max-width: 640px) {
+  .form-container {
+    padding: 1rem;
+  }
+  
+  .donation-amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} 

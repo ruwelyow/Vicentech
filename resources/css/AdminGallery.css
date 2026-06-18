@@ -1,0 +1,297 @@
+/* CSS for AdminGallery component - Consistent with AdminUsers */
+.admin-gallery-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.10);
+    padding: 2.2rem 1.5rem;
+    min-height: 300px;
+    border: 1.5px solid #f2e4ce;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+  
+.admin-gallery-container h2 {
+    color: #3F2E1E;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+  
+.admin-gallery-album-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+  
+.admin-gallery-album-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(60, 47, 30, 0.06);
+    border: 1.5px solid #f2e4ce;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+}
+  
+.admin-gallery-album-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #3F2E1E;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+  
+.admin-gallery-album-card p {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+  
+.admin-gallery-album-card .button-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+  
+.admin-gallery-album-card button,
+.admin-gallery-container button,
+.admin-gallery-image-card button {
+    background: #CD8B3E;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex: 1;
+}
+  
+.admin-gallery-album-card button:hover,
+.admin-gallery-container button:hover,
+.admin-gallery-image-card button:hover {
+    background: #B77B35;
+}
+  
+.admin-gallery-album-card button.delete,
+.admin-gallery-image-card button.delete {
+    background: #e74c3c;
+}
+  
+.admin-gallery-album-card button.delete:hover,
+.admin-gallery-image-card button.delete:hover {
+    background: #c0392b;
+}
+  
+.admin-gallery-image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+  
+.admin-gallery-image-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(60, 47, 30, 0.06);
+    border: 1.5px solid #f2e4ce;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+  
+.admin-gallery-image-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #f2e4ce;
+    background: #f9f9f9;
+}
+  
+.admin-gallery-image-card .button-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+  
+.admin-gallery-upload-area {
+    background: #f9f9f9;
+    border: 2px dashed #CD8B3E;
+    border-radius: 14px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+}
+  
+.admin-gallery-upload-area input[type='file'] {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.admin-album-details-form input,
+.admin-album-details-form textarea,
+.admin-gallery-image-card input {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #e2cfa3;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    color: #3F2E1E;
+}
+
+.admin-album-details-form label,
+.admin-gallery-image-card label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3F2E1E;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  object-fit: contain;
+}
+
+.modal-content button.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.modal-content button.close:hover {
+  background: #B77B35;
+}
+
+.action-button {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(205,139,62,0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 1;
+}
+.action-button:hover {
+  background: #B77B35;
+}
+.action-button.cancel {
+  background: #6c757d;
+}
+.action-button.cancel:hover {
+  background: #5a6268;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-gallery-album-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .admin-gallery-image-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .sacraments-header {
+    align-items: flex-start !important;
+  }
+  
+  .sacraments-title {
+    font-size: 1.5rem !important;
+    min-width: 150px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-gallery-container {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  
+  .admin-gallery-album-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .admin-gallery-image-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .sacraments-header {
+    align-items: flex-start !important;
+  }
+  
+  .sacraments-title {
+    font-size: 1.25rem !important;
+    min-width: 120px !important;
+  }
+  
+  .sacraments-header > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+  
+  .sacraments-header button {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}

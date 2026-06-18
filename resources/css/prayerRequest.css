@@ -1,0 +1,220 @@
+/* Prayer Request Page Styles */
+.prayer-page {
+    min-height: 100vh;
+    background: #DED0B6;
+}
+
+/* Hero Section */
+.prayer-hero {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.prayer-hero h1 {
+    color: #3F2E1E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.prayer-hero p {
+    color: #5C4B38;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* Form Elements */
+input, select, textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(205, 139, 62, 0.2);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .prayer-hero {
+        padding: 2rem 0;
+    }
+
+    .prayer-hero h1 {
+        font-size: 2rem;
+    }
+
+    .form-container {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+
+    /* Mobile responsive styling for prayer request */
+    .approved-requests-container {
+        width: 95vw !important;
+        margin: 1rem auto !important;
+        padding: 1.5rem 1rem !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Mobile responsive for modal form */
+    .fixed.inset-0.z-50.flex.items-center.justify-center.bg-black.bg-opacity-40 .bg-white.rounded-lg.shadow-lg.p-6.max-w-lg.w-full.relative {
+        margin: 1rem !important;
+        max-width: calc(100vw - 2rem) !important;
+    }
+
+    /* Mobile responsive for form inputs */
+    .space-y-6 input,
+    .space-y-6 textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+
+    /* Mobile responsive for buttons */
+    .space-y-6 button[type="submit"] {
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pray-container {
+    min-height: calc(100vh - 4rem);
+    background: linear-gradient(to bottom, rgba(255, 248, 234, 0.9), rgba(205, 138, 62, 0.445));
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Added style to hide search form by default */
+.search-form {
+    display: none; /* Ensure hidden by default */
+}
+
+/* New layout container for form and approved requests */
+.form-and-requests-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 80rem;
+    margin: -4rem auto 0;
+    padding: 0 2rem;
+}
+
+.form-container {
+    background: #fff;
+    border: 1px solid #f2e4ce;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.approved-requests-container {
+    background: #fff;
+    border: 1px solid #f2e4ce;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.approved-requests-title {
+    color: #3F2E1E;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #f2e4ce;
+    padding-bottom: 0.5rem;
+}
+
+.approved-requests-list {
+    max-height: 500px; /* Or adjust as needed */
+    overflow-y: auto;
+    padding-right: 1rem; /* For scrollbar spacing */
+}
+
+.approved-request-item {
+    background: #fcf9f4;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #CD8B3E;
+}
+
+.request-text-public {
+    font-style: italic;
+    color: #5C4B38;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.request-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #8a7a68;
+}
+
+.no-approved-requests {
+    text-align: center;
+    color: #8a7a68;
+    padding: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .form-and-requests-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Desktop styling - ensure desktop design remains unchanged */
+@media (min-width: 769px) {
+    .approved-requests-container {
+        width: 95vw !important;
+        margin: 2.5rem auto !important;
+        padding: 3rem 2rem !important;
+        flex-direction: row !important;
+        gap: 2.5rem !important;
+    }
+
+    .fixed.inset-0.z-50.flex.items-center.justify-center.bg-black.bg-opacity-40 .bg-white.rounded-lg.shadow-lg.p-6.max-w-lg.w-full.relative {
+        margin: 0 !important;
+        max-width: 32rem !important;
+    }
+}

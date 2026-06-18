@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps API Test</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            border: 2px solid #CD8B3E;
+            border-radius: 8px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #3F2E1E;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Google Maps API Test - San Vicente Ferrer Church</h1>
+        <div id="map"></div>
+        <p style="text-align: center; margin-top: 20px; color: #666;">
+            Testing Google Maps API Key: AIzaSyB7WohoejX6VDTzttyuTd0nnyZbV1XdgC8
+        </p>
+    </div>
+
+    <script>
+        async function initMap() {
+            // San Vicente Ferrer Church coordinates (Mamatid, Cabuyao, Laguna)
+            const churchLocation = {
+                lat: 14.247142, // Exact coordinates for Cabuyao, Laguna
+                lng: 121.136673
+            };
+
+            // Create map
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: churchLocation,
+                mapTypeId: 'roadmap'
+            });
+
+            // Create marker element for AdvancedMarkerElement
+            const markerElement = document.createElement('div');
+            markerElement.innerHTML = `
+                <svg width="40" height="50" viewBox="0 0 24 32" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" 
+                          fill="#FF0000" 
+                          stroke="#FFFFFF" 
+                          stroke-width="1.5"/>
+                </svg>
+            `;
+
+            // Try to use AdvancedMarkerElement, fallback to regular Marker
+            let marker;
+            try {
+                if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
+                    marker = new google.maps.marker.AdvancedMarkerElement({
+                        position: churchLocation,
+                        map: map,
+                        title: 'Diocesan Shrine of San Vicente Ferrer',
+                        content: markerElement
+                    });
+                } else {
+                    throw new Error('AdvancedMarkerElement not available');
+                }
+            } catch (error) {
+                console.warn('Using fallback Marker:', error.message);
+                // Fallback to regular marker
+                marker = new google.maps.Marker({
+                    position: churchLocation,
+                    map: map,
+                    title: 'Diocesan Shrine of San Vicente Ferrer',
+                    icon: {
+                        path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+                        fillColor: '#FF0000',
+                        fillOpacity: 1,
+                        strokeColor: '#FFFFFF',
+                        strokeWeight: 2,
+                        scale: 1.5,
+                        anchor: new google.maps.Point(12, 22)
+                    }
+                });
+            }
+
+            // Add info window
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 10px; font-family: Arial, sans-serif;">
+                        <h3 style="margin: 0 0 8px 0; color: #CD8B3E; font-size: 16px;">
+                            Diocesan Shrine of San Vicente Ferrer
+                        </h3>
+                        <p style="margin: 0; font-size: 14px; color: #333;">
+                            Brgy. Mamatid, City of Cabuyao, Laguna
+                        </p>
+                        <p style="margin: 4px 0 0 0; font-size: 12px; color: #666;">
+                            📞 09123456789
+                        </p>
+                    </div>
+                `
+            });
+
+            // Show info window when marker is clicked
+            marker.addListener('click', () => {
+                infoWindow.open(map, marker);
+            });
+
+            console.log('Google Maps loaded successfully with AdvancedMarkerElement!');
+        }
+
+        function handleError() {
+            document.getElementById('map').innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f5f5f5; color: #666; text-align: center; padding: 20px;">
+                    <div>
+                        <h3>Google Maps API Error</h3>
+                        <p>Failed to load Google Maps. Please check:</p>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>API Key is valid</li>
+                            <li>Maps JavaScript API is enabled</li>
+                            <li>Internet connection is working</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+    <script async defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7WohoejX6VDTzttyuTd0nnyZbV1XdgC8&libraries=marker&loading=async&callback=initMap&onerror=handleError">
+    </script>
+</body>
+</html>

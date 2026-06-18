@@ -1,0 +1,267 @@
+/* CSS for AdminMinistryApplicants component, styled like AdminPrayerRequest */
+
+/* Loading State */
+.loading-users {
+  color: #CD8B3E;
+  font-weight: 600;
+  text-align: left !important;
+  padding: 2rem 0;
+}
+
+.admin-prayer-request-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  min-height: 300px;
+  border: 1px solid #f2e4ce;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-controls h2 {
+  color: #3F2E1E;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.filter-buttons button {
+  background: #f9f5ef;
+  border: 1px solid #e0d8cc;
+  color: #5C4B38;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-buttons button:hover {
+  background: #f2e4ce;
+}
+
+.filter-buttons button.active {
+  background: #CD8B3E;
+  color: #fff;
+  border-color: #CD8B3E;
+  font-weight: 600;
+}
+
+.requests-table-container {
+  overflow-x: auto;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.requests-table th, .requests-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f2e4ce;
+  vertical-align: middle;
+}
+
+.requests-table th {
+  color: #3F2E1E;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #fcf9f4;
+}
+
+.request-text {
+  max-width: 400px;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.no-requests {
+  text-align: center;
+  padding: 2rem;
+  color: #8a7a68;
+}
+
+.status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-approved {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-buttons button,
+.btn-view-details,
+.btn-approve,
+.btn-reject,
+.btn-delete {
+  margin: 0;
+}
+
+.action-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-approve:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-reject:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+.btn-view-details {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(205, 139, 62, 0.08);
+}
+
+.btn-view-details:hover {
+  background: #B77B35;
+  color: #fff;
+}
+
+.action-buttons .btn-delete {
+  margin-left: 2.5rem;
+}
+
+.admin-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #e67e22;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  animation: modalIn 0.2s;
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Actions */
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+}
+.btn-danger:hover:enabled {
+  background: #c0392b;
+}
+.btn-secondary {
+  background: #f2f2f2;
+  color: #333;
+}
+.btn-secondary:hover:enabled {
+  background: #e0e0e0;
+}
+
+.btn-success {
+  background: #27ae60;
+  color: #fff;
+}
+.btn-success:hover:enabled {
+  background: #219150;
+}

@@ -1,0 +1,175 @@
+/* Pray Page Styles */
+.prayer-page {
+    min-height: 100vh;
+    background: #DED0B6;
+    padding-bottom: 4rem;
+}
+
+/* Hero Section */
+.prayer-hero {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.prayer-hero h1 {
+    color: #3F2E1E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.prayer-hero p {
+    color: #5C4B38;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* Prayer Navigation */
+.prayer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.prayer-nav-link {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: none;
+    background-color: #FFF6E5;
+    color: #6B4E2E;
+}
+
+.prayer-nav-link:hover {
+    background-color: #FFEBC9;
+}
+
+.prayer-nav-link.active {
+    background-color: #CD8B3E;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Prayer Sections */
+.prayer-container {
+    max-width: 6xl;
+    margin: -4rem auto 0;
+    padding: 0 2rem 4rem;
+}
+
+.prayer-section {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.prayer-section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f2e4ce;
+    padding-bottom: 1rem;
+}
+
+.prayer-section-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    color: #CD8B3E;
+}
+
+.prayer-section-header h2 {
+    color: #3F2E1E;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.prayer-content {
+    color: #5C4B38;
+    line-height: 1.75;
+}
+
+.prayer-content p {
+    margin-bottom: 1rem;
+}
+
+/* Litany Grid */
+.litany-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #CD8B3E;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .prayer-hero {
+        padding: 2rem 0;
+    }
+
+    .prayer-hero h1 {
+        font-size: 2rem;
+    }
+
+    .prayer-container {
+        padding: 0 1rem;
+    }
+
+    .prayer-section {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+
+    .litany-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

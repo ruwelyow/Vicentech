@@ -1,0 +1,455 @@
+/* Staff Dashboard Styles */
+.staff-dashboard-content {
+  padding: 2rem;
+  background-color: #f7f3ed;
+  min-height: calc(100vh - 60px);
+}
+
+/* Prevent text cursor on labels and non-editable text (exclude certificate generator) */
+.staff-dashboard-content label,
+.staff-dashboard-content .card-label,
+.staff-dashboard-content .card-sublabel,
+.staff-dashboard-content .card-value,
+.staff-dashboard-content h1,
+.staff-dashboard-content h2,
+.staff-dashboard-content h3,
+.staff-dashboard-content .section-header,
+.staff-dashboard-content .section-subtitle,
+.staff-dashboard-content .dashboard-subtitle,
+.staff-dashboard-content .request-detail,
+.staff-dashboard-content .request-date,
+.staff-dashboard-content .request-type {
+  user-select: none;
+  cursor: default;
+  caret-color: transparent;
+}
+
+/* Exclude certificate generator from these rules */
+.certificate-generator label,
+.certificate-generator .card-label,
+.certificate-generator .card-sublabel,
+.certificate-generator .card-value,
+.certificate-generator h1,
+.certificate-generator h2,
+.certificate-generator h3 {
+  user-select: auto;
+  cursor: auto;
+  caret-color: auto;
+}
+
+.staff-dashboard-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-subtitle {
+  font-size: 1rem;
+  color: #6B7280;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #f2e4ce;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(205, 139, 62, 0.12);
+}
+
+.card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF6E5;
+}
+
+.mortuary-card .card-icon {
+  background: #FFF6E5;
+}
+
+.certificates-card .card-icon {
+  background: #ECFDF5;
+}
+
+.certificates-processing-card .card-icon {
+  background: #EEF2FF;
+}
+
+.certificates-completed-card .card-icon {
+  background: #ECFDF5;
+}
+
+.sacraments-card .card-icon {
+  background: #FFFBEB;
+}
+
+.sacraments-approved-card .card-icon {
+  background: #ECFDF5;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.card-label {
+  font-size: 0.875rem;
+  color: #5C4B38;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  user-select: none;
+  cursor: default;
+  caret-color: transparent;
+}
+
+.card-sublabel {
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 600;
+  user-select: none;
+  cursor: default;
+  caret-color: transparent;
+}
+
+/* Recent Requests */
+.recent-requests {
+  background: white;
+  border-radius: 0.75rem;
+  border: 1px solid #f2e4ce;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.recent-requests h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3F2E1E;
+  margin: 0;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f2e4ce;
+  background: #FFF6E5;
+}
+
+.requests-table {
+  overflow-x: auto;
+}
+
+.requests-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requests-table th {
+  background: #F8FAFC;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #3F2E1E;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid #f2e4ce;
+}
+
+.requests-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f2e4ce;
+  font-size: 0.875rem;
+  color: #3F2E1E;
+  vertical-align: middle;
+}
+
+.requests-table tr:hover {
+  background-color: #F8FAFC;
+}
+
+.requests-table tr:last-child td {
+  border-bottom: none;
+}
+
+.request-type {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.type-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.request-detail {
+  font-weight: 400;
+  color: #374151;
+}
+
+.request-date {
+  color: #6B7280;
+  font-size: 0.8rem;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+.status-badge.pending {
+  background: #FEF3C7;
+  color: #D97706;
+  border-color: #F59E0B;
+}
+
+.status-badge.approved {
+  background: #DEF7EC;
+  color: #059669;
+  border-color: #10B981;
+}
+
+.status-badge.active {
+  background: #DBEAFE;
+  color: #2563EB;
+  border-color: #3B82F6;
+}
+
+.status-badge.processing {
+  background: #E0E7FF;
+  color: #4F46E5;
+  border-color: #6366F1;
+}
+
+.status-badge.completed {
+  background: #DEF7EC;
+  color: #059669;
+  border-color: #10B981;
+}
+
+.status-badge.rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+  border-color: #EF4444;
+}
+
+/* Button Styles */
+.button.edit {
+  background: #806c4b;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(205, 139, 62, 0.08);
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+.button.edit:hover {
+  background: #6b5a3f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(205, 139, 62, 0.15);
+}
+
+.button.delete {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.10);
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+.button.delete:hover {
+  background: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .summary-cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .staff-dashboard-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-dashboard-content {
+    padding: 1rem;
+  }
+  
+  .staff-dashboard-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-card {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .card-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .card-value {
+    font-size: 1.5rem;
+  }
+  
+  .recent-requests h2 {
+    padding: 1rem;
+    font-size: 1.125rem;
+  }
+  
+  .requests-table th,
+  .requests-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .requests-table th:last-child,
+  .requests-table td:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .staff-dashboard-content {
+    padding: 0.75rem;
+  }
+  
+  .staff-dashboard-content h1 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .summary-card {
+    padding: 0.75rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .card-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .card-value {
+    font-size: 1.25rem;
+  }
+  
+  .card-label {
+    font-size: 0.75rem;
+  }
+  
+  .card-sublabel {
+    font-size: 0.6875rem;
+  }
+  
+  .recent-requests h2 {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .requests-table th,
+  .requests-table td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .requests-table th:nth-child(3),
+  .requests-table th:nth-child(4),
+  .requests-table td:nth-child(3),
+  .requests-table td:nth-child(4) {
+    display: none;
+  }
+  
+  .status-badge {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+  }
+}

@@ -1,0 +1,871 @@
+/* Certificate Generator Styles */
+
+/* Import web font for blackletter/Gothic style */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+/* Old English / Blackletter Font for Certificate Titles */
+@font-face {
+    font-family: 'Monotype Old English Text Std';
+    src: local('Monotype Old English Text Std'), local('Old English Text MT'), local('Old English');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Additional blackletter font fallbacks */
+@font-face {
+    font-family: 'Blackletter';
+    src: local('Blackletter'), local('Fraktur'), local('Gothic');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Style for certificate title elements - using web fonts for better compatibility */
+.template-element.text-element[data-is-title="true"],
+.template-element.text-element.title-element {
+    font-family: "Uncial Antiqua", "MedievalSharp", "Monotype Old English Text Std", "Old English Text MT", "Old English", "Blackletter", "Fraktur", "Gothic", serif !important;
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+}
+
+.certificate-generator {
+    padding: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.generator-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.generator-header h1 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.generator-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    min-height: 600px;
+    align-items: start;
+}
+
+.form-panel {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height: fit-content;
+    border: 2px solid #dee2e6;
+    position: sticky;
+    top: 20px;
+}
+
+.form-panel h3 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.form-group:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
+    transform: translateY(-1px);
+}
+
+.form-control[type="date"] {
+    cursor: pointer;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.template-panel {
+    background: #f5f5f5;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.template-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.certificate-canvas {
+    position: relative;
+    transform-origin: top left;
+    transition: none;
+    /* Ensure elements stay within bounds */
+    contain: layout;
+    overflow: visible;
+    /* Plain PDF-like border - simple black border */
+    border: 1px solid #000000 !important;
+    box-sizing: border-box;
+    padding: 0;
+    /* Plain white background like PDF */
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* All certificates have plain black border like PDF */
+.certificate-canvas.certificate-baptism,
+.certificate-canvas.certificate-confirmation,
+.certificate-canvas.certificate-marriage,
+.certificate-canvas.certificate-death {
+    border-color: #000000 !important;
+    border-width: 1px !important;
+    background: #FFFFFF !important;
+}
+
+/* Remove all decorative borders and patterns - plain PDF style */
+.certificate-canvas.certificate-baptism::after,
+.certificate-canvas.certificate-confirmation::after,
+.certificate-canvas.certificate-marriage::after,
+.certificate-canvas.certificate-death::after {
+    display: none !important;
+}
+
+
+/* Remove decorative borders - plain PDF style */
+.certificate-canvas::after {
+    display: none !important;
+}
+
+.certificate-canvas:hover {
+    transform: none;
+}
+
+/* Ensure template elements are above the border decorations */
+.template-element {
+    position: absolute;
+    user-select: none;
+    transition: none; /* Remove transition for smoother dragging */
+    will-change: transform; /* Optimize for transforms */
+    z-index: 2; /* Ensure elements are above border decorations */
+}
+
+.template-element:hover {
+    opacity: 0.8;
+}
+
+.template-element.selected {
+    border: 2px dashed #007bff !important;
+    z-index: 10;
+    outline: none;
+}
+
+.template-element.dragging {
+    opacity: 0.8;
+    transform: scale(1.02); /* Reduced scale for less jarring effect */
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: none; /* No transition during drag */
+    cursor: grabbing !important;
+}
+
+.text-element {
+    font-family: 'Times New Roman', serif;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    /* Ensure border-bottom lines are always visible */
+    line-height: 1.5;
+}
+
+/* Ensure all text elements with border-bottom show the underline */
+.text-element.has-underline,
+.template-element.has-underline,
+.text-element[style*="border-bottom"],
+.template-element[style*="border-bottom"] {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-bottom: 2px;
+    min-height: 20px !important;
+    display: inline-block !important;
+    /* Ensure the underline is always visible */
+    border-bottom: 1px solid #000000 !important;
+    /* Prevent other borders from overriding */
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Ensure blank lines are always visible even when empty */
+.template-element.has-underline:empty::before,
+.template-element[style*="border-bottom"]:empty::before {
+    content: '\00A0'; /* Non-breaking space */
+    display: inline-block;
+}
+
+/* Override any conflicting styles - ensure underline is always visible */
+.template-element.text-element.has-underline,
+.template-element.text-element[style*="border-bottom"] {
+    border: none !important;
+    border-bottom: 1px solid #000000 !important;
+    outline: none !important;
+}
+
+/* Editable text elements styling - only for dynamic content */
+.template-element.text-element.editable input {
+    cursor: text;
+    border: none;
+    border-bottom: inherit;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.template-element.text-element.editable input:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Ensure inputs with underlines maintain the underline */
+.template-element.text-element.has-underline input,
+.template-element.text-element[style*="border-bottom"] input {
+    border-bottom: 1px solid #000000 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    min-height: 20px !important;
+    display: inline-block !important;
+}
+
+/* Non-editable template elements - prevent interaction */
+.parish-record-view.editing .template-element:not(.editable) {
+    pointer-events: none;
+    cursor: default !important;
+    user-select: none;
+}
+
+.image-element {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-element img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-element:hover .image-overlay {
+    opacity: 1;
+}
+
+.upload-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #0056b3;
+}
+
+.signature-element {
+    border: 2px dashed #6c757d;
+    border-radius: 8px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signature-placeholder {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.decoration-element {
+    pointer-events: none;
+}
+
+.decoration-content {
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.element-editor {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 20px;
+}
+
+.element-editor h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+}
+
+.editor-section {
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.editor-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.position-controls,
+.size-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.position-controls input,
+.size-controls input {
+    padding: 10px 12px;
+    border: 2px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+    background: #f8f9fa;
+}
+
+.position-controls input:focus,
+.size-controls input:focus {
+    outline: none;
+    border-color: #007bff;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.position-controls input::placeholder,
+.size-controls input::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.alignment-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.alignment-controls button {
+    padding: 10px 15px;
+    border: 2px solid #ced4da;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 45px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.alignment-controls button:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.alignment-controls button.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+.upload-image-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 8px rgba(40,167,69,0.3);
+}
+
+.upload-image-btn:hover {
+    background: linear-gradient(135deg, #1e7e34 0%, #1a7a6b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40,167,69,0.4);
+}
+
+.editor-actions {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #dee2e6;
+    text-align: center;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.editor-actions .btn {
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.editor-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #1e7e34;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+.btn-info {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #138496;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.1rem;
+}
+
+.loading {
+    color: #6c757d;
+}
+
+.error {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .generator-content {
+        grid-template-columns: 300px 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .generator-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .generator-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .header-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .certificate-canvas {
+        transform: scale(0.8);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificate-generator {
+        padding: 10px;
+    }
+    
+    .certificate-canvas {
+        transform: scale(0.6);
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Note: template-element transitions are handled in the main .template-element definition above */
+
+/* Custom scrollbar for form panel */
+.form-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.form-panel::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+/* Resize Handles - Professional Photo Editor Style */
+.resize-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #007bff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 15;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+.resize-handle:hover {
+    background-color: #0056b3;
+    transform: scale(1.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+.resize-handle-se {
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+}
+
+.resize-handle-sw {
+    bottom: -6px;
+    left: -6px;
+    cursor: sw-resize;
+}
+
+.resize-handle-ne {
+    top: -6px;
+    right: -6px;
+    cursor: ne-resize;
+}
+
+.resize-handle-nw {
+    top: -6px;
+    left: -6px;
+    cursor: nw-resize;
+}
+
+.form-panel::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Parish Record View Mode - Non-editable, A4 Portrait */
+.certificate-generator.parish-record-view {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.certificate-generator.parish-record-view .generator-content.parish-record-mode {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate-generator.parish-record-view .template-panel.parish-record-panel {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e5e5e5;
+    padding: 20px;
+    border-radius: 0;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+.certificate-canvas.a4-portrait {
+    width: 794px !important;
+    height: 1123px !important;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    border: 1px solid #000000 !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    /* Ensure proper scaling for A4 */
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+    overflow: visible !important;
+}
+
+/* Scale certificate to fit viewport while maintaining aspect ratio */
+.certificate-generator.parish-record-view .template-container.parish-record-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.certificate-generator.parish-record-view .template-container.parish-record-container .certificate-canvas.a4-portrait {
+    /* Scale to fit viewport width if larger than 794px, but maintain A4 aspect ratio */
+    width: 794px !important;
+    height: 1123px !important;
+    flex-shrink: 0;
+    margin: 0 auto !important;
+    display: block;
+}
+
+/* Responsive scaling for smaller screens */
+@media (max-width: 900px) {
+    .certificate-generator.parish-record-view .template-container.parish-record-container .certificate-canvas.a4-portrait {
+        width: min(794px, calc(100vw - 40px));
+        height: auto;
+        aspect-ratio: 794 / 1123;
+    }
+}
+
+/* Ensure certificate elements are not interactive in parish record view when not editing */
+.parish-record-view:not(.editing) .template-element {
+    pointer-events: none;
+    cursor: default !important;
+}
+
+.parish-record-view:not(.editing) .template-element:hover {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Allow interaction when in edit mode */
+.parish-record-view.editing .template-element {
+    pointer-events: auto;
+}
+
+/* Responsive adjustments for A4 portrait in parish record view */
+@media (max-width: 900px) {
+    .certificate-generator.parish-record-view .template-container.parish-record-container .certificate-canvas.a4-portrait {
+        width: min(794px, calc(100vw - 40px)) !important;
+        height: auto !important;
+        aspect-ratio: 794 / 1123;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificate-generator.parish-record-view .generator-content.parish-record-mode {
+        padding: 10px;
+    }
+    
+    .certificate-generator.parish-record-view .template-panel.parish-record-panel {
+        padding: 20px 10px;
+    }
+    
+    .certificate-generator.parish-record-view .template-container.parish-record-container .certificate-canvas.a4-portrait {
+        width: min(794px, calc(100vw - 20px)) !important;
+        height: auto !important;
+        aspect-ratio: 794 / 1123;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificate-generator.parish-record-view .template-container.parish-record-container .certificate-canvas.a4-portrait {
+        width: min(794px, calc(100vw - 20px)) !important;
+        height: auto !important;
+        aspect-ratio: 794 / 1123;
+        margin: 0 auto !important;
+    }
+}

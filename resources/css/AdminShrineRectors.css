@@ -1,0 +1,119 @@
+/* Shrine Rectors Admin - styled to match AdminPrayerRequest */
+.shrine-rectors-admin {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  min-height: 300px;
+  border: 1px solid #f2e4ce;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.shrine-rectors-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.shrine-rectors-header-controls h2 {
+  color: #3F2E1E;
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.shrine-rectors-table-container {
+  overflow-x: auto;
+}
+
+.shrine-rectors-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.shrine-rectors-table th, .shrine-rectors-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f2e4ce;
+  vertical-align: middle;
+}
+
+.shrine-rectors-table th {
+  color: #3F2E1E;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #fcf9f4;
+}
+
+.shrine-rectors-no-rectors {
+  text-align: center;
+  padding: 2rem;
+  color: #8a7a68;
+}
+
+.shrine-rectors-action-buttons button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.shrine-rectors-action-buttons button:hover {
+  opacity: 0.8;
+}
+
+.shrine-rectors-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 44, 44, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.shrine-rectors-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,40,20,0.18);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 340px;
+  max-width: 600px;
+  width: 90vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.shrine-rectors-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.shrine-rectors-modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin: 0;
+}
+
+.shrine-rectors-modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #b91c1c;
+  font-weight: 700;
+  line-height: 1;
+}

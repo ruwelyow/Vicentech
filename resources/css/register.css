@@ -1,0 +1,156 @@
+.login-page {
+    min-height: 100vh;
+    background: #DED0B6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-page h1 {
+    color: #3F2E1E;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-page p {
+    color: #5C4B38;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Elements */
+input {
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(205, 139, 62, 0.2);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-page {
+        padding: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.register-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(255, 248, 234, 0.9), rgba(205, 138, 62, 0.445));
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-title {
+    color: #CD8B3E;
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #CD8B3E;
+    box-shadow: 0 0 0 2px rgba(205, 139, 62, 0.2);
+}
+
+.form-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #CD8B3E;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #B77B35;
+}
+
+.form-link {
+    color: #CD8B3E;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}
+
+.form-text {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+} 

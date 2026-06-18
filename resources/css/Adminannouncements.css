@@ -1,0 +1,501 @@
+/* CSS for AdminAnnouncements component */ 
+
+.admin-announcements-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.10);
+  padding: 2.2rem 1.5rem;
+  min-height: 300px;
+  border: 1.5px solid #f2e4ce;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-announcements-container h2 {
+  color: #3F2E1E;
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-announcements-container .action-button {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.admin-announcements-container .announcements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Add spacing for announcement cards in requests-table-container */
+.requests-table-container .announcement-card {
+  margin-bottom: 1.5rem;
+}
+
+.requests-table-container .announcement-card:last-child {
+  margin-bottom: 0;
+}
+
+.admin-announcements-container .announcement-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.10);
+  border: 1px solid #f2e4ce;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+}
+
+.admin-announcements-container .announcement-card .announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.admin-announcements-container .announcement-card .announcement-icon {
+  font-size: 28px;
+}
+
+.admin-announcements-container .announcement-card .announcement-title {
+  font-weight: 700;
+  color: #3F2E1E;
+  font-size: 18px;
+}
+
+.admin-announcements-container .announcement-card .announcement-description {
+  color: #5C4B38;
+  font-size: 15px;
+}
+
+.admin-announcements-container .announcement-card .announcement-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.admin-announcements-container .announcement-card .announcement-date {
+  color: #CD8B3E;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.admin-announcements-container .announcement-card .button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-announcements-container .announcement-card .button {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.admin-announcements-container .announcement-card .button.delete {
+  background: #e74c3c;
+}
+
+.announcement-form-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.announcement-form-container h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.announcement-form-container input[type="text"],
+.announcement-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+}
+
+.announcement-form-container textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.announcement-form-container .button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.announcement-form-container .button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.announcement-form-container .button.cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.add-news-btn {
+  display: inline-block;
+  margin: 0 0 1.2rem 0;
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(205,139,62,0.10);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.add-news-btn:hover {
+  background: #B77B35;
+  /* No transform or box-shadow animation */
+}
+
+/* News Modal Styles - Matching ShrineRectorsAdmin */
+.news-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 44, 44, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.news-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,40,20,0.18);
+  padding: 1.5rem;
+  min-width: 600px;
+  max-width: 700px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.news-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.news-modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin: 0;
+}
+
+.news-modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #b91c1c;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* News Modal Responsive Design */
+@media (max-width: 768px) {
+  .news-modal-content {
+    min-width: 95vw;
+    max-width: 95vw;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-modal-content {
+    min-width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+}
+
+/* Announcements Modal Styles - Matching ShrineRectorsAdmin */
+.announcements-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 44, 44, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.announcements-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,40,20,0.18);
+  padding: 1.5rem;
+  min-width: 600px;
+  max-width: 700px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.announcements-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.announcements-modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3F2E1E;
+  margin: 0;
+}
+
+.announcements-modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #b91c1c;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Announcements Modal Responsive Design */
+@media (max-width: 768px) {
+  .announcements-modal-content {
+    min-width: 95vw;
+    max-width: 95vw;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .announcements-modal-content {
+    min-width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+}
+
+/* News Grid and Cards - Matching Events Style */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* News Card */
+.news-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(60, 47, 30, 0.06);
+  border: 1.5px solid #f2e4ce;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* News Display Mode */
+.news-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.news-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-date-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(205, 139, 62, 0.95);
+  color: white;
+  border-radius: 12px;
+  padding: 0.5rem;
+  text-align: center;
+  min-width: 60px;
+  backdrop-filter: blur(10px);
+}
+
+.date-month {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date-day {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.news-title {
+  color: #3F2E1E;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.news-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #5C4B38;
+  font-size: 0.9rem;
+}
+
+.meta-item svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  color: #CD8B3E;
+  flex-shrink: 0;
+}
+
+.news-description {
+  color: #5C4B38;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.news-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.edit-btn,
+.delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  flex: 1;
+}
+
+.edit-btn {
+  background: #CD8B3E;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #B77B35;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* News Grid Responsive Design */
+@media (max-width: 1400px) {
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-actions {
+    flex-direction: column;
+  }
+} 

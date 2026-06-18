@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parish Records Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f6f2;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(60,40,20,0.10);
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #3F2E1E;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #f2e4ce;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #CD8B3E;
+        }
+        .stat-label {
+            color: #5C4B38;
+            font-size: 0.9rem;
+        }
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .records-table th,
+        .records-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #f2e4ce;
+        }
+        .records-table th {
+            background: #CD8B3E;
+            color: white;
+            font-weight: 600;
+        }
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .btn {
+            background: #CD8B3E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #B67A35;
+        }
+        .loading {
+            text-align: center;
+            color: #5C4B38;
+            font-style: italic;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parish Records System Test</h1>
+        <p>This page tests the Parish Records API endpoints.</p>
+        
+        <button class="btn" onclick="loadStatistics()">Load Statistics</button>
+        <button class="btn" onclick="loadRecords()">Load Records</button>
+        <button class="btn" onclick="testCreateRecord()">Test Create Record</button>
+        
+        <div id="error-container"></div>
+    </div>
+
+    <div class="container">
+        <h2>Statistics</h2>
+        <div id="statistics-loading" class="loading" style="display: none;">Loading statistics...</div>
+        <div id="statistics-container"></div>
+    </div>
+
+    <div class="container">
+        <h2>Records</h2>
+        <div id="records-loading" class="loading" style="display: none;">Loading records...</div>
+        <div id="records-container"></div>
+    </div>
+
+    <script>
+        const API_BASE = '/api/public-parish-records';
+
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.innerHTML = `<div class="error">${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        async function loadStatistics() {
+            const loadingEl = document.getElementById('statistics-loading');
+            const containerEl = document.getElementById('statistics-container');
+            
+            loadingEl.style.display = 'block';
+            containerEl.innerHTML = '';
+
+            try {
+                const response = await fetch(`${API_BASE}/statistics`, {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                containerEl.innerHTML = `
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number">${data.total_records}</div>
+                            <div class="stat-label">Total Records</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.completed_records}</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.pending_records}</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.this_month_records}</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                    </div>
+                    <h3>By Type:</h3>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number">${data.by_type.baptism}</div>
+                            <div class="stat-label">Baptisms</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.by_type.confirmation}</div>
+                            <div class="stat-label">Confirmations</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.by_type.marriage}</div>
+                            <div class="stat-label">Marriages</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.by_type.funeral}</div>
+                            <div class="stat-label">Funerals</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${data.by_type.mass}</div>
+                            <div class="stat-label">Masses</div>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+                showError(`Failed to load statistics: ${error.message}`);
+            } finally {
+                loadingEl.style.display = 'none';
+            }
+        }
+
+        async function loadRecords() {
+            const loadingEl = document.getElementById('records-loading');
+            const containerEl = document.getElementById('records-container');
+            
+            loadingEl.style.display = 'block';
+            containerEl.innerHTML = '';
+
+            try {
+                const response = await fetch(`${API_BASE}`, {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const records = await response.json();
+                
+                if (records.length === 0) {
+                    containerEl.innerHTML = '<p>No records found.</p>';
+                    return;
+                }
+
+                const tableHTML = `
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Priest</th>
+                                <th>Status</th>
+                                <th>Certificate #</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${records.map(record => `
+                                <tr>
+                                    <td>${record.name}</td>
+                                    <td style="text-transform: capitalize;">${record.type}</td>
+                                    <td>${new Date(record.date).toLocaleDateString()}</td>
+                                    <td>${record.priest}</td>
+                                    <td>
+                                        <span class="status-${record.status}">
+                                            ${record.status.charAt(0).toUpperCase() + record.status.slice(1)}
+                                        </span>
+                                    </td>
+                                    <td>${record.certificate_number || 'N/A'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                
+                containerEl.innerHTML = tableHTML;
+            } catch (error) {
+                console.error('Error loading records:', error);
+                showError(`Failed to load records: ${error.message}`);
+            } finally {
+                loadingEl.style.display = 'none';
+            }
+        }
+
+        async function testCreateRecord() {
+            const recordData = {
+                type: 'baptism',
+                name: 'Test Baby ' + Date.now(),
+                date: '2025-09-15',
+                priest: 'Fr. Test Priest',
+                status: 'completed',
+                details: {
+                    parents: 'Test Father & Test Mother',
+                    godparents: 'Test Godfather & Test Godmother',
+                    birth_date: '2025-01-15',
+                    birth_place: 'Test City'
+                },
+                notes: 'Test record created from browser'
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(recordData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`HTTP ${response.status}: ${errorData.message || response.statusText}`);
+                }
+
+                const result = await response.json();
+                alert(`Record created successfully! Certificate #: ${result.record.certificate_number}`);
+                
+                // Refresh the data
+                loadStatistics();
+                loadRecords();
+            } catch (error) {
+                console.error('Error creating record:', error);
+                showError(`Failed to create record: ${error.message}`);
+            }
+        }
+
+        // Load initial data
+        window.addEventListener('load', () => {
+            loadStatistics();
+            loadRecords();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* Certificate Request Page Styles */
+.certificate-page {
+    min-height: 100vh;
+    background: #DED0B6;
+}
+
+/* Hero Section */
+.certificate-hero {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.certificate-hero h1 {
+    color: #3F2E1E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.certificate-hero p {
+    color: #5C4B38;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* Form Elements */
+input, select, textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(205, 139, 62, 0.2);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .certificate-hero {
+        padding: 2rem 0;
+    }
+
+    .certificate-hero h1 {
+        font-size: 2rem;
+    }
+
+    .form-container {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+
+    /* Make form fields stack on mobile */
+    .certificate-form-container .grid.grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Adjust form spacing on mobile */
+    .certificate-form-container form {
+        gap: 1rem !important;
+    }
+
+    /* Make buttons full width on mobile */
+    .certificate-form-container button[type="submit"] {
+        width: 100% !important;
+    }
+
+    /* Hide desktop button on mobile */
+    .desktop-validate-btn {
+        display: none !important;
+    }
+
+    /* Show mobile button */
+    .mobile-validate-btn {
+        display: block !important;
+    }
+}
+
+/* Desktop styling - ensure desktop design remains unchanged */
+@media (min-width: 769px) {
+    /* Show desktop button */
+    .desktop-validate-btn {
+        display: block !important;
+    }
+
+    /* Hide mobile button */
+    .mobile-validate-btn {
+        display: none !important;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
+
+/* Loading overlay styles */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #CD8B3E;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loading-text {
+    font-size: 1.2rem;
+    color: #3F2E1E;
+    font-weight: 500;
+}
+
+/* Popup modal styles */
+.popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(60, 47, 30, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    /* Add stacking context for pseudo-element */
+    overflow: hidden;
+}
+.popup-modal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 0;
+}
+.popup-content {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(60, 47, 30, 0.2);
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    max-width: 300px;
+    text-align: center;
+    border: 2px solid #f2e4ce;
+}
+.popup-title {
+    font-size: 1.3rem;
+    color: #3F2E1E;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+}
+.popup-message {
+    color: #5C4B38;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+}
+.popup-close {
+    background: #CD8B3E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.popup-close:hover {
+    background: #B77B35;
+} 

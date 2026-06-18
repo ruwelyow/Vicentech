@@ -1,0 +1,265 @@
+/* CSS for AdminPrayerRequest component */ 
+.admin-prayer-request-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  min-height: 300px;
+  border: 1px solid #f2e4ce;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-controls h2 {
+  color: #3F2E1E;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.filter-buttons button {
+  background: #f9f5ef;
+  border: 1px solid #e0d8cc;
+  color: #5C4B38;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-buttons button:hover {
+  background: #f2e4ce;
+}
+
+.filter-buttons button.active {
+  background: #CD8B3E;
+  color: #fff;
+  border-color: #CD8B3E;
+  font-weight: 600;
+}
+
+.requests-table-container {
+  overflow-x: auto;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.requests-table th, .requests-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f2e4ce;
+  vertical-align: middle;
+}
+
+.requests-table th {
+  color: #3F2E1E;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #fcf9f4;
+}
+
+.request-text {
+  max-width: 400px;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.no-requests {
+  text-align: center;
+  padding: 2rem;
+  color: #8a7a68;
+}
+
+.status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-approved {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.action-buttons button {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.action-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.btn-approve:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-reject:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+.admin-prayer-request-container .request-management-placeholder {
+  color: #5C4B38;
+}
+
+.request-row.unread {
+    background-color: #fffbef;
+    font-weight: 600;
+}
+
+.request-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.request-row:hover {
+    background-color: #f7f1e9;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modern-modal-header {
+  background: #DED0B6;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 1.2rem 2rem 1rem 2rem;
+  margin: -2rem -2rem 0 -2rem;
+  color: #3F2E1E;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: none;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #3F2E1E;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-body hr {
+    margin: 1rem 0;
+    border-color: #f0e6d8;
+}
+
+.request-full-text {
+    white-space: pre-wrap; /* preserves whitespace and newlines */
+    line-height: 1.6;
+}
+
+.modal-footer {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-view-details {
+  background: #CD8B3E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(205, 139, 62, 0.08);
+}
+
+.btn-view-details:hover {
+  background: #B77B35;
+  color: #fff;
+} 

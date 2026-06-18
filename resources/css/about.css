@@ -1,0 +1,347 @@
+.container-fluid {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(255, 248, 234, 0.9), rgba(205, 138, 62, 0.445));
+    background-size: cover;
+    background-position: center;
+    padding: 2rem 0;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.priest-image {
+    object-fit: cover;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 3px solid #CD8B3E;
+}
+
+h5.theme-text {
+    color: #CD8B3E;
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+span {
+    color: black;
+    font-family: 'Times New Roman', serif;
+    font-size: 1rem;
+}
+
+.theme-hr {
+    margin: 1rem auto;
+    width: 50%;
+    border: none;
+    border-top: 2px solid #CD8B3E;
+    opacity: 0.3;
+}
+
+p.theme-text {
+    margin-bottom: 0.5rem;
+    color: #4B5563;
+    font-family: 'Times New Roman', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.profile-card {
+    background-color: #fff;
+    padding: 2rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.border-end {
+    border-right: 1px solid rgba(205, 139, 62, 0.3);
+}
+
+.border-top {
+    border-top: 1px solid rgba(205, 139, 62, 0.3);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col-md-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.col-md-5 > .profile-card {
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+    .border-end {
+        border-right: none;
+        border-bottom: 1px solid rgba(205, 139, 62, 0.3);
+        margin-bottom: 2rem;
+    }
+    .row {
+        flex-direction: column;
+    }
+    .col-md-5 {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .col-md-5:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}
+
+.search-form {
+    display: none !important;
+}
+
+/* About Page Styles */
+.about-page {
+    min-height: 100vh;
+    background: #DED0B6;
+}
+
+/* Hero Section */
+.about-hero {
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.about-hero h1 {
+    color: #3F2E1E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.about-hero p {
+    color: #5C4B38;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* Current Rectors */
+.profile-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(205, 139, 62, 0.2);
+}
+
+.priest-image {
+    border: 4px solid #f2e4ce;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover .priest-image {
+    transform: scale(1.05);
+}
+
+/* Past Rectors Section */
+.past-rectors {
+    background: linear-gradient(to bottom, transparent, rgba(242, 228, 206, 0.3));
+    padding: 4rem 0;
+    border-radius: 20px;
+    margin-top: 3rem;
+}
+
+.past-rector-card {
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.past-rector-card > div {
+    padding: 2rem !important;
+}
+
+.past-rector-card:hover {
+    transform: translateY(-5px);
+}
+
+.past-rector-card img {
+    width: 100px !important;
+    height: 100px !important;
+    border: 3px solid #f2e4ce;
+    transition: transform 0.3s ease;
+    margin-right: 1.5rem !important;
+}
+
+.past-rector-card:hover img {
+    transform: scale(1.05);
+}
+
+.past-rector-card h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem;
+}
+
+.past-rector-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.past-rector-card .text-\[#CD8B3E\] {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.past-rectors h2 {
+    font-size: 3rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.past-rectors > div:first-child p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container-fluid {
+        padding: 0 2rem;
+    }
+    
+    .past-rector-card > div {
+        padding: 1.75rem !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .about-hero {
+        padding: 3rem 0;
+    }
+    
+    .about-hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .col-md-5 {
+        margin: 0 !important;
+        padding: 1rem;
+    }
+    
+    .past-rectors h2 {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 2rem 0;
+    }
+    
+    .about-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .profile-card {
+        margin-bottom: 2rem;
+    }
+    
+    .past-rectors {
+        padding: 3rem 0;
+    }
+    
+    .past-rector-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .past-rector-card > div {
+        padding: 1.5rem !important;
+    }
+    
+    .past-rector-card img {
+        width: 90px !important;
+        height: 90px !important;
+        margin-right: 1.25rem !important;
+    }
+    
+    .past-rector-card h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .past-rectors h2 {
+        font-size: 2.2rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        padding: 0 1rem;
+    }
+    
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .profile-card {
+        padding: 1.5rem !important;
+    }
+    
+    .priest-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .past-rector-card .flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .past-rector-card img {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto 1.5rem !important;
+    }
+    
+    .past-rector-card > div {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .past-rectors h2 {
+        font-size: 2rem !important;
+    }
+    
+    .past-rectors > div:first-child p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-card, .past-rector-card {
+    animation: fadeIn 0.5s ease-out;
+}

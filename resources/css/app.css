@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure modals stay fixed to viewport center */
+.fixed-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: translateZ(0) !important;
+}
+
+/* Additional modal positioning fixes */
+.logout-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  transform: translateZ(0) !important;
+  will-change: transform !important;
+}
+
+@layer components {
+    .nav-container {
+        @apply bg-white shadow-md;
+    }
+    
+    .logo-container {
+        @apply flex items-center space-x-2;
+    }
+    
+    .logo-image {
+        @apply h-12 w-12;
+    }
+    
+    .logo-text {
+        @apply text-sm;
+    }
+    
+    .logo-title-top {
+        @apply text-xs uppercase font-semibold;
+    }
+    
+    .logo-title-main {
+        @apply text-lg font-bold text-[#CD8B3E];
+    }
+    
+    .logo-subtitle {
+        @apply text-xs text-gray-600;
+    }
+    
+    .nav-link {
+        @apply text-gray-600 hover:text-[#CD8B3E] transition-colors;
+    }
+    
+    .login-button {
+        @apply bg-[#CD8B3E] text-white px-4 py-1 rounded-md hover:bg-[#B77B35] transition;
+    }
+    
+    .mobile-menu {
+        @apply mt-4 flex flex-col gap-2 md:hidden;
+    }
+    
+    .mobile-nav-link {
+        @apply px-4 py-2 text-gray-700 hover:bg-gray-100 rounded;
+    }
+    
+    .mobile-login-button {
+        @apply px-4 py-2 bg-[#CD8B3E] text-white rounded hover:bg-[#B77B35];
+    }
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 2px solid white;
+}
+  
