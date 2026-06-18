@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# Run locally (Git Bash / WSL) after composer.json changes to refresh api/vendor.tar.gz.
+# Run after composer.json changes: bash scripts/pack.sh
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$(dirname "$0")/.."
 
-cd "$PROJECT_ROOT"
-
-echo "==> Installing production Composer dependencies..."
 composer install \
   --no-dev \
   --no-interaction \
@@ -16,16 +12,15 @@ composer install \
   --classmap-authoritative
 
 mkdir -p api
-echo "==> Packing vendor/ -> api/vendor.tar.gz ..."
 tar -czf api/vendor.tar.gz \
   --exclude='vendor/*/tests' \
   --exclude='vendor/*/Tests' \
   --exclude='vendor/*/Test' \
-  --exclude='vendor/*/*/tests' \
   --exclude='vendor/*/doc' \
   --exclude='vendor/*/docs' \
   --exclude='vendor/*/examples' \
   --exclude='vendor/*/.git' \
   vendor/
 
-echo "==> Done: api/vendor.tar.gz ($(du -sh api/vendor.tar.gz | cut -f1))"
+echo "Created api/vendor.tar.gz ($(du -sh api/vendor.tar.gz | cut -f1))"
+echo "Commit this file: git add api/vendor.tar.gz && git commit -m 'chore: update vendor.tar.gz'"

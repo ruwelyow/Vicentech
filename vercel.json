@@ -5,9 +5,10 @@
   "buildCommand": "npm run build && bash scripts/vercel-prepare.sh",
   "installCommand": "npm install",
   "functions": {
-    "api/main.go": {
+    "api/**/*.go": {
       "runtime": "@vercel/go@3.4.3",
-      "maxDuration": 60
+      "maxDuration": 60,
+      "excludeFiles": "{node_modules/**,vendor/**,public/**,storage/**,resources/js/**,resources/sass/**,resources/css/**,tests/**,.git/**,bootstrap/cache/**}"
     }
   },
   "routes": [

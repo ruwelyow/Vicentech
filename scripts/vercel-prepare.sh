@@ -1,48 +1,20 @@
 #!/usr/bin/env bash
-# Runs on Vercel (Linux) during build — packs vendor, bundles PHP-FPM, copies slim Laravel source.
+# Vercel build — uses pre-committed api/vendor.tar.gz, copies slim Laravel, deletes bloat.
 set -euo pipefail
 
-PHP_VERSION="8.4.18"
-BASE_URL="https://dl.static-php.dev/static-php-cli/bulk"
+PROJECT_ROOT="$(pwd)"
 
-echo "==> [1/3] Packing vendor.tar.gz..."
-curl -fsSL "$BASE_URL/php-${PHP_VERSION}-cli-linux-x86_64.tar.gz" | tar -xz -C /tmp
-chmod +x /tmp/php
-curl -fsSL https://getcomposer.org/installer | /tmp/php -- --install-dir=/tmp --filename=composer
-/tmp/php /tmp/composer install \
-  --no-dev \
-  --no-interaction \
-  --no-scripts \
-  --prefer-dist \
-  --optimize-autoloader \
-  --classmap-authoritative
+if [ ! -f "api/vendor.tar.gz" ]; then
+  echo "ERROR: api/vendor.tar.gz is missing."
+  echo "Run: bash scripts/pack.sh"
+  echo "Then commit api/vendor.tar.gz before deploying."
+  exit 1
+fi
 
-mkdir -p api
-tar -czf api/vendor.tar.gz \
-  --exclude='vendor/*/tests' \
-  --exclude='vendor/*/Tests' \
-  --exclude='vendor/*/Test' \
-  --exclude='vendor/*/doc' \
-  --exclude='vendor/*/docs' \
-  --exclude='vendor/*/examples' \
-  --exclude='vendor/*/.git' \
-  vendor/
+echo "==> vendor.tar.gz: $(du -sh api/vendor.tar.gz | cut -f1)"
 
-echo "    vendor.tar.gz: $(du -sh api/vendor.tar.gz | cut -f1)"
-
-echo "==> [2/3] Bundling PHP-FPM binary..."
-PHP_FPM_DEST="api/php-fpm-bin"
-PHP_FPM_URL="${PHP_FPM_URL:-$BASE_URL/php-${PHP_VERSION}-fpm-linux-x86_64.tar.gz}"
-TMP_TAR=$(mktemp /tmp/php-fpm-XXXXXX.tar.gz)
-curl -fsSL "$PHP_FPM_URL" -o "$TMP_TAR"
-tar -xzf "$TMP_TAR" -C /tmp php-fpm
-mv /tmp/php-fpm "$PHP_FPM_DEST"
-chmod +x "$PHP_FPM_DEST"
-rm -f "$TMP_TAR"
-echo "    php-fpm-bin: $(du -sh "$PHP_FPM_DEST" | cut -f1)"
-
-echo "==> [3/3] Copying slim Laravel bundle (no images/node_modules)..."
-rm -rf api/laravel
+echo "==> Copying slim Laravel bundle into api/laravel/..."
+rm -rf api/laravel api/php-fpm-bin
 mkdir -p api/laravel
 
 for d in app bootstrap config routes; do
@@ -72,4 +44,10 @@ for f in artisan composer.json composer.lock; do
 done
 
 echo "    laravel bundle: $(du -sh api/laravel | cut -f1)"
+
+echo "==> Removing node_modules and vendor (prevents 250 MB error)..."
+rm -rf node_modules vendor
+
+echo "==> Final api/ footprint:"
+du -sh api api/vendor.tar.gz api/laravel 2>/dev/null || true
 echo "==> Vercel prepare complete."

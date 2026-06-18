@@ -26,4 +26,3 @@ yarn-error.log
 /.zed
 /api/php-fpm-bin
 /api/laravel
-/api/vendor.tar.gz
